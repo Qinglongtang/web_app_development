@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# Flask/Instance
+instance/
+.web_app_development/
+
+# Database
+database/*.db
+
+# Environments
+.env
+
+# IDEs
+.vscode/
+.idea/
