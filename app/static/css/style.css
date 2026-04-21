@@ -1,0 +1,129 @@
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --bg-color: #0f172a;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    color: white;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 漸層背景裝飾 */
+.background-overlay {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, #4338ca 0%, transparent 50%),
+                radial-gradient(circle at 20% 30%, #4f46e5 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, #7c3aed 0%, transparent 40%);
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: -1;
+}
+
+/* 玻璃擬態樣式 */
+.glass-nav {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.5rem;
+}
+
+.glass-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: white;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #818cf8;
+    box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.2);
+    color: white;
+}
+
+.glass-btn-group {
+    background: var(--glass-bg);
+    border-radius: 0.75rem;
+    padding: 2px;
+}
+
+.glass-btn-group .btn {
+    border: none;
+    border-radius: 0.6rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+}
+
+.glass-btn-group .btn.active {
+    background-color: #6366f1;
+    color: white;
+}
+
+.glass-list-item {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--glass-border) !important;
+    padding: 1rem 1.25rem;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.glass-list-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* 任務完成樣式 */
+.task-completed .task-text {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.task-completed {
+    opacity: 0.8;
+}
+
+/* Flash 消息樣式 */
+.glass-alert {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    color: white;
+    border-radius: 1rem;
+}
+
+/* 按鈕美化 */
+.btn-primary {
+    background: #6366f1;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+}
+
+.btn-primary:hover {
+    background: #4f46e5;
+    transform: translateY(-1px);
+}
+
+.hover-opacity-100:hover {
+    opacity: 1 !important;
+}
