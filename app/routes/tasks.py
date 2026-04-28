@@ -60,3 +60,19 @@ def delete_task(task_id):
         flash('刪除任務失敗。', 'error')
         
     return redirect(url_for('tasks.index'))
+
+@tasks_bp.route('/edit/<int:task_id>', methods=['POST'])
+def edit_task(task_id):
+    """
+    編輯任務內容。
+    """
+    content = request.form.get('content')
+    if not content or not content.strip():
+        flash('任務內容不能為空！', 'error')
+    else:
+        if task_model.update_task(task_id, content=content):
+            flash('任務已成功更新！', 'success')
+        else:
+            flash('更新任務失敗。', 'error')
+            
+    return redirect(url_for('tasks.index'))

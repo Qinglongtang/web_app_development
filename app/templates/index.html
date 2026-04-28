@@ -53,13 +53,43 @@
                             <span class="task-text text-white">{{ task.content }}</span>
                         </div>
                         
-                        <div class="actions">
+                        <div class="actions d-flex align-items-center">
+                            <!-- 編輯按鈕 -->
+                            <button type="button" class="btn btn-link p-0 text-decoration-none text-info opacity-75 hover-opacity-100 me-3" data-bs-toggle="modal" data-bs-target="#editModal{{ task.id }}">
+                                <i class="bi bi-pencil-square fs-5"></i>
+                            </button>
+                            
+                            <!-- 刪除按鈕 -->
                             <form action="{{ url_for('tasks.delete_task', task_id=task.id) }}" method="POST" 
-                                  onsubmit="return confirm('確定要刪除這項任務嗎？')">
+                                  onsubmit="return confirm('確定要刪除這項任務嗎？')" class="mb-0">
                                 <button type="submit" class="btn btn-link p-0 text-decoration-none text-danger opacity-75 hover-opacity-100">
                                     <i class="bi bi-trash3 fs-5"></i>
                                 </button>
                             </form>
+                        </div>
+                    </div>
+
+                    <!-- 編輯任務 Modal -->
+                    <div class="modal fade" id="editModal{{ task.id }}" tabindex="-1" aria-labelledby="editModalLabel{{ task.id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content text-dark">
+                                <form action="{{ url_for('tasks.edit_task', task_id=task.id) }}" method="POST">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editModalLabel{{ task.id }}">編輯任務</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label for="taskContent{{ task.id }}" class="form-label">任務內容</label>
+                                            <input type="text" class="form-control" id="taskContent{{ task.id }}" name="content" value="{{ task.content }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                        <button type="submit" class="btn btn-primary">儲存變更</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
